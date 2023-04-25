@@ -4,25 +4,19 @@
  * @return {boolean}
  */
 var isIsomorphic = function(s, t) {
+
     let obj1 = {}
     let obj2 = {}
 
     for(let i in s){
-        if(obj1[s[i]] && obj1[s[i]] !== t[i]){
+        if(obj1[s[i]] && obj1[s[i]]!== t[i] || obj2[t[i]] && obj2[t[i]] !== s[i] ){
             return false
         }else{
-        obj1[s[i]] = t[i]
+            obj1[s[i]] = t[i]
+            obj2[t[i]] = s[i]
         }
     }
-        for(let i in t){
-        if(obj2[t[i]] && obj2[t[i]] !== s[i]){
-            return false
-        }else{
-        obj2[t[i]] = s[i]
-        }
-    }
-        return true
 
-
+    return true
     
 };
